@@ -1,0 +1,111 @@
+[
+  {
+    "model": "api.group",
+    "pk": 1,
+    "fields": { "text": "Search Engines", "icon": "fa-brands fa-searchengin" }
+  },
+  {
+    "model": "api.group",
+    "pk": 2,
+    "fields": { "text": "Socials", "icon": "fa-solid fa-icons" }
+  },
+  {
+    "model": "api.link",
+    "pk": 1,
+    "fields": {
+      "text": "Twatter",
+      "description": "For farting up the wrong tree with a bird.",
+      "icon": "fa-brands fa-twitter",
+      "href": "https://twitter.com",
+      "group": 2
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 2,
+    "fields": {
+      "text": "Fartbook",
+      "description": "For smelling old people.",
+      "icon": "fa-brands fa-facebook",
+      "href": "https://facebook.com",
+      "group": 2
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 3,
+    "fields": {
+      "text": "Fart+",
+      "description": "Did this fart even happen?",
+      "icon": "fa-brands fa-google-plus-g",
+      "href": "https://killedbygoogle.com",
+      "group": 2
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 4,
+    "fields": {
+      "text": "Instafart",
+      "description": "Pictures of gas.",
+      "icon": "fa-brands fa-square-instagram",
+      "href": "https://instagram.com",
+      "group": 2
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 5,
+    "fields": {
+      "text": "Fartdit",
+      "description": "Long winded and terrible looking farts.",
+      "icon": "fa-brands fa-square-reddit",
+      "href": "https://reddit.com",
+      "group": 2
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 6,
+    "fields": {
+      "text": "OnlyFarts",
+      "description": "Paid private farts.",
+      "icon": "fa-solid fa-cookie",
+      "href": "https://onlyfans.com",
+      "group": 2
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 7,
+    "fields": {
+      "text": "Yahoo",
+      "description": "1998 called",
+      "icon": "fa-brands fa-yahoo",
+      "href": "https://yahoo.com",
+      "group": 1
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 8,
+    "fields": {
+      "text": "Google",
+      "description": "Now evil",
+      "icon": "fa-brands fa-google",
+      "href": "https://google.com",
+      "group": 1
+    }
+  },
+  {
+    "model": "api.link",
+    "pk": 9,
+    "fields": {
+      "text": "Stack Overflow",
+      "description": "Supports the internet",
+      "icon": "fa-brands fa-stack-overflow",
+      "href": "https://stackoverflow.com",
+      "group": 1
+    }
+  }
+]
