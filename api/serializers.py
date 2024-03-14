@@ -2,16 +2,27 @@ from rest_framework import serializers
 from .models import Link, Group
 
 
-class LinkSerializer(serializers.HyperlinkedModelSerializer):
+class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
-        fields = "__all__"
+        fields = [
+            "id",
+            "text",
+            "description",
+            "icon",
+            "href",
+            "group",
+        ]
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = "__all__"
+        fields = [
+            "id",
+            "text",
+            "icon",
+        ]
 
 
 class DashboardLinkSerializer(serializers.ModelSerializer):
