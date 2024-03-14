@@ -1,7 +1,8 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import ss from "./ss.png"
+import axios from "axios";
 
 const user = {
   name: 'Tom Cook',
@@ -9,12 +10,11 @@ const user = {
   imageUrl:
     'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
+const backendUrl = "http://localhost:8000/api";
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-  { name: 'Reports', href: '#', current: false },
+  { name: 'Api', href: backendUrl, current: false },
+  { name: 'Git', href: 'https://github.com/thomas-forte/striped-sweater', current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -26,7 +26,15 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function App() {
+export function App() {
+  const [dashboard, setDashboard] = useState<any>(null);
+
+  useEffect(() => {
+    axios.get(backendUrl + "/dashboard/").then((response) => {
+      setDashboard(response.data);
+    })
+  }, []);
+
   return (
     <>
       <div className="min-h-full">
@@ -40,7 +48,7 @@ export default function App() {
                       <img
                         className="h-8 w-auto"
                         src={ss}
-                        alt="striped sweater guy"
+                        alt="striped sweater"
                       />
                     </div>
                     <div className="hidden md:block">
@@ -187,8 +195,17 @@ export default function App() {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-            what a pretty page
+          <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            { dashboard ? dashboard.map((g: any, i: number) => (
+            <div key={"keypurnicus-" + i} className="px-10 py-6 m-6 border rounded-lg bg-gray-200">
+              <h2 className="text-xl font-bold text-gray-600 mb-3">{g.text}</h2>
+              <ul className="list-disc">
+                { g.links.map((l: any, i: number) => (
+                  <li key={"kedorian-" + i }><a className="text-blue-600" href={l.href}>{l.text}</a> -- {l.description}</li>
+                ))}
+              </ul>
+            </div>
+            )) : "That one special sweater." }
           </div>
         </main>
       </div>
