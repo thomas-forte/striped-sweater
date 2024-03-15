@@ -9,8 +9,18 @@ export function App() {
 
   useEffect(() => {
     getDashboard().then((groups) => setDashboard(groups));
+
+    const visitsStorage = localStorage.getItem("visits");
+    if (visitsStorage) {
+      localStorage.setItem("visits", `${Number(visitsStorage) + 1}`)
+    } else {
+      localStorage.setItem("visits", '1')
+    }
   }, []);
 
+  const visits = localStorage.getItem("visits");
+
+  
   return (
     <>
       <div className="min-h-full">
@@ -33,6 +43,9 @@ export function App() {
               : "That one special sweater."}
           </div>
         </main>
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            Website Hits: {visits}
+          </div>
       </div>
     </>
   );
