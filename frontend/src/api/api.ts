@@ -9,4 +9,3 @@ const client = axios.create({
 
 export const getDashboard = async (): Promise<DashboardGroup[]> =>
   (await client.get("dashboard/")).data;
-
