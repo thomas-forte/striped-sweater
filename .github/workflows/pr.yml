@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: 3.12
+  GIT_BRANCH: ${{ github.head_ref || github.ref_name }}
+  GIT_COMMIT_SHA: ${{ github.event.pull_request.head.sha || github.event.workflow_run.head_sha || github.sha }}
+
+jobs:
+  flake8-lint:
+    runs-on: ubuntu-latest
+    name: Lint 🤔
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: flake8 Lint
+        uses: py-actions/flake8@v2
+
+  black-lint:
+    runs-on: ubuntu-latest
+    name: Styling 😎
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+      - name: black Lint
+        uses: psf/black@stable
+        with:
+          version: "24.2.0"
