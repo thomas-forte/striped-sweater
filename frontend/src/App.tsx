@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { Group } from "./components/Group";
 import { getDashboard } from "./api/api";
 import { DashboardGroup } from "./api/api.types";
+import { SuperMarquee } from "./components/SuperMarquee";
 
 export function App() {
   const [dashboard, setDashboard] = useState<DashboardGroup[]>([]);
@@ -36,13 +37,16 @@ export function App() {
     <>
       <div className="min-h-full">
         <Navbar />
+        <SuperMarquee
+          text="Fartacular is on the rise, BUY BUY BUY! Who needs inflation when you have farts, they are impervious to shrinkflation. Buy gold NO, Buy pure methane Fuck yes!"
+          speed="25s"
+        />
         <header>
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
               Dashboard
             </h1>
-            {/* @ts-ignore */}
-            <marquee>Welcome to my dashboard</marquee>
+
           </div>
         </header>
         <main>
