@@ -2,11 +2,10 @@ import { DashboardLink } from "../api/api.types";
 
 export interface LinkProps {
   link: DashboardLink;
-  key: string;
 }
 
-export const Link = ({ link, key }: LinkProps) => (
-  <li key={key}>
+export const Link = ({ link }: LinkProps) => (
+  <li>
     <a className="text-blue-600" href={link.href}>
       {link.text}
     </a>
