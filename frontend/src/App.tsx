@@ -6,6 +6,7 @@ import { DashboardGroup } from "./api/api.types";
 
 export function App() {
   const [dashboard, setDashboard] = useState<DashboardGroup[]>([]);
+  const [time, setTime] = useState('');
 
   useEffect(() => {
     getDashboard().then((groups) => setDashboard(groups));
@@ -18,7 +19,14 @@ export function App() {
     }
   }, []);
 
-  const visits = localStorage.getItem("visits");
+  const visits = localStorage.getItem("visits") ? Number(localStorage.getItem("visits")) : 1;
+  useEffect(() => {
+    const intervalID = setInterval(() =>  {
+      const currentTimeFormatted = new Date().toISOString().replace(/\.\d{3}/, '');
+      setTime(currentTimeFormatted)
+    }, 1000);
+    return () => clearInterval(intervalID);
+  }, [])
 
   
   return (
@@ -44,7 +52,10 @@ export function App() {
           </div>
         </main>
           <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-            Website Hits: {visits}
+            <div><span>Website Hits: {visits}</span></div>
+            <progress max={`${visits > 100 ? visits + 5 : 100}`} value={visits}> {`${visits}%`} </progress>
+
+            <p>The time is now: <time dateTime={time}/>{time}</p>
           </div>
       </div>
     </>
