@@ -4,10 +4,14 @@ import { Group } from "./components/Group";
 import { getDashboard } from "./api/api";
 import { DashboardGroup } from "./api/api.types";
 import { SuperMarquee } from "./components/SuperMarquee";
+import {
+  CalendarIcon,
+  ClockIcon,
+} from "@heroicons/react/20/solid";
 
 export function App() {
   const [dashboard, setDashboard] = useState<DashboardGroup[]>([]);
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     getDashboard().then((groups) => setDashboard(groups));
@@ -25,13 +29,12 @@ export function App() {
     : 1;
   useEffect(() => {
     const intervalID = setInterval(() => {
-      const currentTimeFormatted = new Date()
-        .toISOString()
-        .replace(/\.\d{3}/, "");
-      setTime(currentTimeFormatted);
+      setTime(new Date());
     }, 1000);
     return () => clearInterval(intervalID);
   }, []);
+
+  const formattedTime = (dt: Date) => dt.toISOString().replace(/\.\d{3}/, "");
 
   return (
     <>
@@ -42,11 +45,28 @@ export function App() {
           speed="25s"
         />
         <header>
-          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl py-8 sm:px-6 lg:px-8">
+            <div className="min-w-0 flex-1 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
               Dashboard
             </h1>
-
+              <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+                <div className="mt-2 flex items-center text-sm text-gray-500">
+                  <CalendarIcon
+                    className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  {time.toDateString()}
+                </div>
+                <div className="mt-2 flex items-center text-sm text-gray-500">
+                  <ClockIcon
+                    className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  {time.toTimeString()}
+                </div>
+              </div>
+            </div>
           </div>
         </header>
         <main>
@@ -68,8 +88,8 @@ export function App() {
           </progress>
 
           <p>
-            The time is now: <time dateTime={time} />
-            {time}
+            The time is now: <time dateTime={formattedTime(time)} />
+            {formattedTime(time)}
           </p>
         </div>
       </div>

@@ -19,6 +19,7 @@ const navigation = [
     current: false,
   },
 ];
+
 const userNavigation = [
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
@@ -30,7 +31,10 @@ function classNames(...classes: string[]) {
 }
 
 export const Navbar = () => (
-  <Disclosure as="nav" className="bg-green-800">
+  <Disclosure
+    as="nav"
+    className="sticky top-0 bg-gradient-to-r from-teal-200 to-violet-500"
+  >
     {({ open }) => (
       <>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -40,16 +44,16 @@ export const Navbar = () => (
                 <img className="h-8 w-auto" src={ss} alt="striped sweater" />
               </div>
               <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
+                <div className="ml-6 flex items-baseline space-x-4">
                   {navigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? "bg-green-900 text-white"
-                          : "text-gray-300 hover:bg-green-700 hover:text-white",
-                        "rounded-md px-3 py-2 text-sm font-medium",
+                          ? "bg-gradient-to-r from-pink-500 to-yellow-500 text-white"
+                          : "text-white border border-slate-400 hover:bg-gradient-to-r hover:from-green-700 hover:to-purple-800 hover:text-white hover:animate-pulse",
+                        "min-w-24 text-center rounded-md px-3 py-2 text-sm font-medium",
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
@@ -63,7 +67,7 @@ export const Navbar = () => (
               <div className="ml-4 flex items-center md:ml-6">
                 <button
                   type="button"
-                  className="relative rounded-full bg-green-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative rounded-full p-1 text-white hover:border hover:border-white"
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
@@ -71,15 +75,15 @@ export const Navbar = () => (
                 </button>
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
+                <Menu as="div" className="relative ml-3 none">
                   <div>
-                    <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-green-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="relative flex max-w-xs items-center rounded-full text-sm hover:border hover:border-white hover:hue-rotate-90">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
                         src={user.imageUrl}
-                        alt=""
+                        alt={user.name}
                       />
                     </Menu.Button>
                   </div>
@@ -100,7 +104,7 @@ export const Navbar = () => (
                               href={item.href}
                               className={classNames(
                                 active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-green-700",
+                                "block px-4 py-2 text-sm text-slate-500",
                               )}
                             >
                               {item.name}
@@ -115,7 +119,7 @@ export const Navbar = () => (
             </div>
             <div className="-mr-2 flex md:hidden">
               {/* Mobile menu button */}
-              <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-green-800 p-2 text-white hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 bg-gradient-to-r from-pink-500 to-yellow-500 text-white hover:bg-gradient-to-r hover:from-green-700 hover:to-purple-800 hover:text-white hover:animate-pulse">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
                 {open ? (
@@ -137,8 +141,8 @@ export const Navbar = () => (
                 href={item.href}
                 className={classNames(
                   item.current
-                    ? "bg-green-900 text-white"
-                    : "text-gray-300 hover:bg-green-700 hover:text-white",
+                    ? "bg-gradient-to-r from-pink-500 to-yellow-500 text-white"
+                    : "text-white hover:bg-gradient-to-r hover:from-green-700 hover:to-purple-800 hover:text-white hover:animate-pulse",
                   "block rounded-md px-3 py-2 text-base font-medium",
                 )}
                 aria-current={item.current ? "page" : undefined}
@@ -147,7 +151,7 @@ export const Navbar = () => (
               </Disclosure.Button>
             ))}
           </div>
-          <div className="border-t border-gray-700 pb-3 pt-4">
+          <div className="border-t border-slate-200 pb-3 pt-4">
             <div className="flex items-center px-5">
               <div className="flex-shrink-0">
                 <img
@@ -160,13 +164,13 @@ export const Navbar = () => (
                 <div className="text-base font-medium leading-none text-white">
                   {user.name}
                 </div>
-                <div className="text-sm font-medium leading-none text-gray-400">
+                <div className="text-sm font-medium leading-none text-slate-200">
                   {user.email}
                 </div>
               </div>
               <button
                 type="button"
-                className="relative ml-auto flex-shrink-0 rounded-full bg-green-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative ml-auto flex-shrink-0 rounded-full p-1 text-white hover:border hover:border-white"
               >
                 <span className="absolute -inset-1.5" />
                 <span className="sr-only">View notifications</span>
@@ -179,7 +183,7 @@ export const Navbar = () => (
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-green-700 hover:to-purple-800 hover:text-white hover:animate-pulse"
                 >
                   {item.name}
                 </Disclosure.Button>
