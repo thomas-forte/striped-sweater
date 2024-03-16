@@ -4,10 +4,7 @@ import { Group } from "./components/Group";
 import { getDashboard } from "./api/api";
 import { DashboardGroup } from "./api/api.types";
 import { SuperMarquee } from "./components/SuperMarquee";
-import {
-  CalendarIcon,
-  ClockIcon,
-} from "@heroicons/react/20/solid";
+import { CalendarIcon, ClockIcon } from "@heroicons/react/20/solid";
 
 export function App() {
   const [dashboard, setDashboard] = useState<DashboardGroup[]>([]);
@@ -83,8 +80,7 @@ export function App() {
             <span>Website Hits: {visits}</span>
           </div>
           <progress max={`${visits > 100 ? visits + 5 : 100}`} value={visits}>
-            {" "}
-            {`${visits}%`}{" "}
+            {`${visits}%`}
           </progress>
 
           <p>
