@@ -11,7 +11,8 @@ const user = {
 };
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
+  { name: "Dashboard", href: "/", current: true },
+  { name: "Discord", href: "/discord-tools", current: false },
   { name: "Api", href: "http://localhost:8000/api", current: false },
   {
     name: "Git",
