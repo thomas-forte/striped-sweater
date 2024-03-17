@@ -32,6 +32,10 @@ export function App() {
     setSearchItem(searchTerm);
   };
 
+  const cheapGreedyFilter = (group: DashboardGroup) =>
+    group.text.toLowerCase().includes(searchItem) ||
+    group.links.some((l) => l.text.toLowerCase().includes(searchItem));
+
   return (
     <Page
       pageName="Dashboard"
@@ -75,11 +79,7 @@ export function App() {
       </div>
       {dashboard.length
         ? dashboard
-            .filter(
-              (g) =>
-                g.text.toLowerCase().includes(searchItem) ||
-                g.links.some((l) => l.text.toLowerCase().includes(searchItem)),
-            )
+            .filter(cheapGreedyFilter)
             .map((group, i) => <Group group={group} key={"keypurnicus-" + i} />)
         : "That one special sweater."}
     </Page>
