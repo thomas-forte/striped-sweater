@@ -44,9 +44,15 @@ export const DiscordTools = () => {
             }}
           >
             {copied ? (
-              <CheckIcon className="h-5 w-5 text-green-200" aria-hidden="true" />
+              <CheckIcon
+                className="h-5 w-5 text-green-200"
+                aria-hidden="true"
+              />
             ) : (
-              <DocumentDuplicateIcon className="h-5 w-5 animate-pulse" aria-hidden="true" />
+              <DocumentDuplicateIcon
+                className="h-5 w-5 animate-pulse"
+                aria-hidden="true"
+              />
             )}
           </button>
         </p>
