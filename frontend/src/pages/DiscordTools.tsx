@@ -23,7 +23,7 @@ export const DiscordTools = () => {
 
   return (
     <Page pageName="Discord Tools">
-      <div className="flex align-center justify-around bg-blue-300 p-6 rounded-md">
+      <div className="flex flex-col sm:flex-row gap-y-3 align-center justify-around bg-blue-200 p-6 rounded-md">
         <input
           className="bg-blue-500 px-3 py-5 rounded-md text-white"
           type="datetime-local"
