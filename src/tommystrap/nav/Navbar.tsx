@@ -13,7 +13,6 @@ export interface NavbarLink {
 const navigation: NavbarLink[] = [
   { name: "Dashboard", href: "/" },
   { name: "Discord", href: "/discord-tools" },
-  { name: "Api", href: "http://localhost:8000/api" },
   {
     name: "Git",
     href: "https://github.com/thomas-forte/striped-sweater",
