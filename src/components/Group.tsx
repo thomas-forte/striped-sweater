@@ -10,8 +10,8 @@ export interface GroupProps {
 export const Group = ({ group, searchFilter }: GroupProps) => {
   const linkFilter = (searchFilter: string) => {
     return (link: DashboardLink) =>
-      link.text.toLowerCase().includes(searchFilter) ||
-      link.description.toLowerCase().includes(searchFilter);
+      link.text.toLowerCase().includes(searchFilter.toLowerCase()) ||
+      link.description.toLowerCase().includes(searchFilter.toLowerCase());
   };
 
   const list = searchFilter
