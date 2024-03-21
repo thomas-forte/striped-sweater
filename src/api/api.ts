@@ -1,17 +1,13 @@
 import axios from "axios";
 import { DashboardGroup } from "./api.types";
+import { stub } from "./stub.data";
 
 export const baseURL = "http://localhost:8000/api";
 
-const client = axios.create({
-  baseURL,
-});
-
 export const getDashboard = async (): Promise<DashboardGroup[]> => {
   return [
-    
+    ...stub,
   ];
-  // return (await client.get("dashboard/")).data;
 };
 
 const weatherClient = axios.create({
