@@ -9,13 +9,15 @@ const client = axios.create({
 
 export const getDashboard = async (): Promise<DashboardGroup[]> => {
   return (await client.get("dashboard/")).data;
-}
+};
 
 const weatherClient = axios.create({
-  baseURL: "https://wttr.in"
-})
+  baseURL: "https://wttr.in",
+});
 
-export type Weather = {current_condition?: {temp_F?: number, weatherDesc?: {value: string}[]}[]};
+export type Weather = {
+  current_condition?: { temp_F?: number; weatherDesc?: { value: string }[] }[];
+};
 export const getWeather = async (): Promise<Weather> => {
   return (await weatherClient.get("Cleveland?format=j1")).data;
-}
+};

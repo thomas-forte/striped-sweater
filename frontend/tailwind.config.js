@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Fira Sans']
-      }
+        sans: ["Fira Sans"],
+      },
     },
   },
   plugins: [],
