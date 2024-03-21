@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Navbar } from "./Navbar";
-import { SuperMarquee } from "./SuperMarquee";
+
+import { Navbar } from "../tommystrap/nav/Navbar";
+import { Footer } from "../tommystrap/footer/Footer";
 
 export function Layout() {
   const visits = localStorage.getItem("visits")
@@ -18,21 +19,18 @@ export function Layout() {
   }, []);
 
   return (
-    <div className="min-h-full">
+    <div className="min-h-full flex flex-col">
       <Navbar />
-      <SuperMarquee
-        text="Fartacular is on the rise, BUY BUY BUY! Who needs inflation when you have farts, they are impervious to shrinkflation. Buy gold NO, Buy pure methane Fuck yes!"
-        speed="25s"
-      />
       <Outlet />
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <div className="flex-grow"></div>
+      <Footer marquee="Fartacular is on the rise, BUY BUY BUY! Who needs inflation when you have farts, they are impervious to shrinkflation. Buy gold NO, Buy pure methane Fuck yes!">
         <div>
           <span>Website Hits: {visits}</span>
         </div>
         <progress max={`${visits > 100 ? visits + 5 : 100}`} value={visits}>
           {`${visits}%`}
         </progress>
-      </div>
+      </Footer>
     </div>
   );
 }

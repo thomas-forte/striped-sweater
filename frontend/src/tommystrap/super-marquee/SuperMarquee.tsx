@@ -1,4 +1,6 @@
 import { useState } from "react";
+import classNames from "classnames";
+
 import "@fontsource/dotgothic16/400.css";
 import styles from "./SuperMarquee.module.css";
 
@@ -6,33 +8,40 @@ export interface SuperMarqueeProps {
   text?: string;
   speed?: string;
   stopOnHover?: boolean;
+  sideBorders?: boolean;
+  width?: string;
 }
 
 export const SuperMarquee = ({
   text,
   speed,
   stopOnHover,
+  sideBorders,
+  width,
 }: SuperMarqueeProps) => {
   const [easterEggMode, setEasterEggMode] = useState(false);
 
   return (
     <div
-      className={
-        (easterEggMode ? styles.easterEggMode : "") +
-        " " +
-        styles.marquee +
-        " text-green-400 min-w-100 border-y-4 border-gray-400 bg-black"
-      }
+      className={classNames(
+        "text-green-400 border-y-4 border-gray-400 bg-black",
+        styles.marquee,
+        {
+          [styles.easterEggMode]: easterEggMode,
+          "border-x-4": sideBorders,
+          "min-w-100": !width,
+        },
+      )}
+      style={{ width: width ?? "unset" }}
       onDoubleClick={() => setEasterEggMode(!easterEggMode)}
     >
       <span
-        className={
-          (stopOnHover ? styles.stopOnHover : "") +
-          " text-2xl tracking-wider mb-1"
-        }
+        className={classNames("text-2xl tracking-wider mb-1", {
+          [styles.stopOnHover]: stopOnHover,
+        })}
         style={{ animationDuration: speed ?? "15s" }}
       >
-        {text || "Welcome to my dashboard!"}
+        {text || "Super Marquee!"}
       </span>
     </div>
   );
