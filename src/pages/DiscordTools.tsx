@@ -27,12 +27,12 @@ export const DiscordTools = () => {
       <Section title="Universal Date Block">
         <div className="flex flex-col sm:flex-row content-center justify-around flex-wrap gap-y-3">
           <input
-            className="bg-blue-900 px-3 py-5 rounded-md text-white"
+            className="bg-blue-900 px-3 py-5 rounded-md text-white font-mono"
             type="datetime-local"
             value={time}
             onChange={handleInputChange}
           />
-          <p className="bg-blue-900 px-3 py-5 rounded-md text-white flex">
+          <p className="bg-blue-900 px-3 py-5 rounded-md text-white flex font-mono">
             {`<t:${new Date(time).valueOf() / 1000}:F>`}
             <button
               className="ml-2"
