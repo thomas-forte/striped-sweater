@@ -7,6 +7,9 @@ const client = axios.create({
   baseURL,
 });
 
+export const getDashboard = async (): Promise<DashboardGroup[]> => {
+  return (await client.get("dashboard/")).data;
+}
 
 const weatherClient = axios.create({
   baseURL: "https://wttr.in"
