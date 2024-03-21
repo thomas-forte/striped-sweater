@@ -5,10 +5,10 @@
   position: relative;
   user-select: none;
 
-  span {
-    display: inline-block;
-    animation: marquee 15s linear infinite;
-  }
+}
+.marquee > span {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
 }
 
 .stopOnHover:hover {

@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import "@fontsource/fira-sans";
 import "./index.css";
 
 import { Layout } from "./components/Layout";
-import { App } from "./pages/App";
+import { Dashboard } from "./pages/Dashboard";
 import { DiscordTools } from "./pages/DiscordTools";
 
 const router = createBrowserRouter([
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <App />,
+        element: <Dashboard />,
       },
       {
         path: "discord-tools",

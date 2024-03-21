@@ -1,20 +1,32 @@
-import React from "react";
-import { DashboardGroup } from "../api/api.types";
+import { DashboardGroup, DashboardLink } from "../api/api.types";
 import { Link } from "./Link";
+import { Section } from "../tommystrap/section/Section";
 
 export interface GroupProps {
   group: DashboardGroup;
+  searchFilter?: string;
 }
 
-export const Group = ({ group }: GroupProps) => (
-  <div className="px-10 py-6 m-6 border rounded-lg bg-gray-200">
-    <h2 className="text-xl font-bold text-gray-600 mb-3">{group.text}</h2>
-    <ul className="list-disc">
-      {group.links.map((link, i) => (
-        <React.Fragment key={`${link} + ${i}`}>
-          <Link link={link} />
-        </React.Fragment>
-      ))}
-    </ul>
-  </div>
-);
+export const Group = ({ group, searchFilter }: GroupProps) => {
+  const linkFilter = (searchFilter: string) => {
+    return (link: DashboardLink) =>
+      link.text.toLowerCase().includes(searchFilter) ||
+      link.description.toLowerCase().includes(searchFilter);
+  };
+
+  const list = searchFilter
+    ? group.links.filter(linkFilter(searchFilter))
+    : group.links;
+
+  if (list.length) {
+    return (
+      <Section title={group.text}>
+        {list.map((link) => (
+          <Link key={link.text} link={link} />
+        ))}
+      </Section>
+    );
+  } else {
+    return <></>;
+  }
+};
