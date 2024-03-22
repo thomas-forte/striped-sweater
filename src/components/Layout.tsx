@@ -27,6 +27,12 @@ export function Layout() {
       <Footer marquee="Fartacular is on the rise, BUY BUY BUY! Who needs inflation when you have farts, they are impervious to shrinkflation. Buy gold NO, Buy pure methane Fuck yes!">
         <div className="flex justify-between items-center">
           <div>
+            <div>
+              <span>Website Hits: {visits}</span>
+            </div>
+            <progress max={`${visits > 100 ? visits + 5 : 100}`} value={visits}>
+              {`${(visits / (visits > 100 ? visits + 5 : 100)) * 100}%`}
+            </progress>
           </div>
           <div>
             <a
