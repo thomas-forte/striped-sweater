@@ -13,10 +13,6 @@ export interface NavbarLink {
 const navigation: NavbarLink[] = [
   { name: "Dashboard", href: "/" },
   { name: "Discord", href: "/discord-tools" },
-  {
-    name: "Git",
-    href: "https://github.com/thomas-forte/striped-sweater",
-  },
 ];
 
 export const Navbar = () => {
