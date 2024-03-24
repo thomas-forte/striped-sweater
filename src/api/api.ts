@@ -5,9 +5,7 @@ import { stub } from "./stub.data";
 export const baseURL = "http://localhost:8000/api";
 
 export const getDashboard = async (): Promise<DashboardGroup[]> => {
-  return [
-    ...stub,
-  ];
+  return [...stub];
 };
 
 const weatherClient = axios.create({
