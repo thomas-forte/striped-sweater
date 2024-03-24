@@ -1,7 +1,7 @@
 {
   "recommendations": [
-        "visualstudioexptteam.vscodeintellicode",
-        "ms-python.flake8",
-        "esbenp.prettier-vscode"
-    ]
+    "visualstudioexptteam.vscodeintellicode",
+    "ms-python.flake8",
+    "esbenp.prettier-vscode"
+  ]
 }
