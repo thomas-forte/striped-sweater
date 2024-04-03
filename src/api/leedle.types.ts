@@ -29,4 +29,3 @@ export interface GhPrs {
 export interface GhCommits {
   total_commits: number;
 }
-
