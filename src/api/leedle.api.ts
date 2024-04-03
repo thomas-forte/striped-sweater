@@ -3,7 +3,7 @@ import { GhPrs } from "./leedle.types";
 import { formatTimeAgo } from "../common/formatTime";
 
 const leedleClient = axios.create({
-  baseURL: "http://silent.but.deadly.farts/",
+  baseURL: "https://leedle.wumbo.mund.us/",
 });
 
 export const isLeedleInReach = async (): Promise<boolean> => {
