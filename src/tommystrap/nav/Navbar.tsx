@@ -1,9 +1,11 @@
+import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
+import { useLeedle } from "../../context/LeedleContext";
+
 import ss from "../../images/ss.png";
-import { NavLink } from "react-router-dom";
 
 export interface NavbarLink {
   name: string;
@@ -15,7 +17,13 @@ const navigation: NavbarLink[] = [
   { name: "Discord", href: "/discord-tools" },
 ];
 
+const leedleNavigation: NavbarLink[] = [
+  { name: "Github", href: "/github-dash" },
+];
+
 export const Navbar = () => {
+  const leedle = useLeedle();
+
   const mobileButton = (open: boolean) => {
     return open ? (
       <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -78,12 +86,16 @@ export const Navbar = () => {
             </div>
             <div className="hidden md:flex items-baseline space-x-5 mr-4">
               {navigation.map((item) => navItem(item))}
+              {leedle?.serverEnabled &&
+                leedleNavigation.map((item) => navItem(item))}
             </div>
           </div>
 
           <Disclosure.Panel className="md:hidden">
             <div className="bg-blue-900 text-gray-200 space-y-1 p-3">
               {navigation.map((item) => navMenuItem(item, close))}
+              {leedle?.serverEnabled &&
+                leedleNavigation.map((item) => navMenuItem(item, close))}
             </div>
           </Disclosure.Panel>
         </>
