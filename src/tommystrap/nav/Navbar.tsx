@@ -70,7 +70,11 @@ export const Navbar = () => {
           <div className="flex justify-between h-16">
             <div className="flex items-center bg-blue-900 md:rounded-br-2xl px-4 flex-grow md:flex-grow-0">
               <div className="flex-shrink-0">
-                <img className="h-8 w-auto" src={ss} alt="striped sweater" />
+                <img
+                  className="h-8 w-auto"
+                  src="/logo512.png"
+                  alt="striped sweater"
+                />
               </div>
               <h1 className="ml-3 text-xl sm:text-3xl font-light text-gray-200">
                 Striped Sweater
