@@ -1,11 +1,9 @@
-import { NavLink } from "react-router-dom";
-import classNames from "classnames";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import classNames from "classnames";
+import { NavLink } from "react-router-dom";
 
 import { useLeedle } from "../../context/LeedleContext";
-
-import ss from "../../images/ss.png";
 
 export interface NavbarLink {
   name: string;
